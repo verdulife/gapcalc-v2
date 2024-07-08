@@ -6,3 +6,7 @@ export function formatPrice(price: number): string {
     maximumFractionDigits: 2,
   }).format(price);
 }
+
+export function formatPlural(amount: number, text: string): string {
+  return amount === 1 ? `${amount} ${text}` : `${amount} ${text}s`;
+}

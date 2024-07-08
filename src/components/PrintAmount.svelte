@@ -30,16 +30,16 @@
     type="search"
     bind:value={amount_filter}
     placeholder="🔎 Buscar cantidad"
-    class="w-full py-2 bg-transparent border-b border-gray-800 outline-none placeholder-gray-600"
+    class="w-full p-4 bg-gray-800 border border-gray-700 rounded-md outline-none placeholder-gray-600" 
   />
 
-  <ul class="flex flex-wrap w-full gap-2">
+  <ul class="flex flex-wrap w-full">
     {#each filtered_amounts as amount}
       <li
-        class="flex justify-between gap-2 w-full border-b border-gray-800 py-4"
+        class="flex justify-between gap-2 w-full py-4 border-b border-gray-800"
       >
         <p>{amount}u ({calcSheets(amount, per_sheet)} hojas)</p>
-        <p>{calcPrice(amount, paper, faces_value, per_sheet)}</p>
+        <p class="px-2 py-1 bg-gray-800 text-sm rounded-md">{calcPrice(amount, paper, faces_value, per_sheet)}</p>
       </li>
     {/each}
   </ul>

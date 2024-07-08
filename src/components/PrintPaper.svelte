@@ -2,23 +2,31 @@
   import { Papers } from "@/lib/stores";
 
   export let paper_value;
+  $: currentPaper = $Papers.find((paper) => paper.id === paper_value);
 </script>
 
-<div class="flex flex-wrap gap-2">
-  {#each $Papers as paper}
-    <label
-      class="px-4 py-2 grow text-center {paper_value === paper.id
-        ? 'bg-blue-500'
-        : 'bg-gray-950'}"
-    >
-      <input
-        type="radio"
-        name="papel"
-        bind:group={paper_value}
-        value={paper.id}
-        class="appearance-none"
-      />
-      <span>{paper.name}</span>
-    </label>
-  {/each}
-</div>
+<details class="flex flex-col gap-2" name="prints">
+  <summary class="font-bold text-lg">{currentPaper.name}</summary>
+
+  <div class="grid grid-cols-3 w-full gap-2 mt-2">
+    {#each $Papers as paper}
+      <label
+        class="
+          w-full aspect-square flex items-center justify-center
+          p-4 text-center rounded-md border border-gray-600
+          transition-colors
+          {paper_value === paper.id ? 'bg-green-300 text-black' : 'bg-gray-700'}
+        "
+      >
+        <input
+          type="radio"
+          name="papel"
+          bind:group={paper_value}
+          value={paper.id}
+          class="appearance-none"
+        />
+        <span>{paper.name}</span>
+      </label>
+    {/each}
+  </div>
+</details>

@@ -4,13 +4,13 @@
   import PlotterResult from "./PlotterResult.svelte";
 
   let plotter_value = "papel_masas";
-  let plotter_height = 100;
+  let height_value = "0";
 </script>
 
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-6 p-8 pb-28">
+  <PlotterResult {plotter_value} {height_value} />
+  <hr class="border-gray-800 w-full" />
   <PlotterType bind:plotter_value />
-  <hr class="border-gray-500 w-full" />
-  <PlotterSize bind:height_value={plotter_height} {plotter_value} />
-  <hr class="border-gray-500 w-full" />
-  <PlotterResult {plotter_value} {plotter_height} />
+  <hr class="border-gray-800 w-full" />
+  <PlotterSize bind:height_value {plotter_value} />
 </div>

@@ -1,9 +1,15 @@
-<header class="fixed bottom-4 flex w-full justify-center">
+---
+import Printer from "@/assets/Printer.astro";
+import Plotter from "@/assets/Plotter.astro";
+import Options from "@/assets/Options.astro";
+---
+
+<header class="fixed bottom-0 flex w-full justify-center px-4 py-2">
   <nav
-    class="flex items-center gap-4 rounded-lg border border-gray-800/50 bg-white/20 backdrop-blur px-4 py-2"
+    class="flex items-center gap-4 rounded-full border border-gray-800/50 bg-gray-950/70 px-4 py-2 backdrop-blur"
   >
-    <a href="/" class="text-xs p-4 uppercase">Impresión</a>
-    <a href="/plotter" class="text-xs p-4 uppercase">Plotter</a>
-    <a href="/user" class="text-xs p-4 uppercase">Ajustes</a>
+    <a href="/" class="p-4 text-xs uppercase"><Printer /></a>
+    <a href="/plotter" class="p-4 text-xs uppercase"><Plotter /></a>
+    <a href="/user" class="p-4 text-xs uppercase"><Options /></a>
   </nav>
 </header>
