@@ -2,7 +2,6 @@ export const SECOND_FACE_PRICE = 0.85;
 export const WORK_PRICE = 15;
 export const DISPLAY_AMOUNTS = [25, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000];
 export const PLOTTER_ADDED_CM = 10;
-export const PLOTTER_LOSS_CM = 5;
 export const ALLOWED_KEYS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "/", "*", "=", "Enter", "Backspace", "DEL", "AC", "Escape"];
 
 function round(value: number): number {
@@ -11,17 +10,17 @@ function round(value: number): number {
 
 export const papers = [
   {
-    id: "300_gr",
+    id: "300gr",
     name: "300gr",
     price: [2.60, round(2.60 + SECOND_FACE_PRICE)]
   },
   {
-    id: "300_texturado",
-    name: "300 Texturado",
+    id: "300gr_texturado",
+    name: "300gr Texturado",
     price: [2.70, round(2.70 + SECOND_FACE_PRICE)]
   },
   {
-    id: "135_gr",
+    id: "135gr",
     name: "135gr",
     price: [1.70, round(1.70 + SECOND_FACE_PRICE)]
   },
@@ -117,8 +116,8 @@ export const prints = [
     per_sheet: 4,
   },
   {
-    id: "impresion_100x200",
-    label: "Impresión 100x200",
+    id: "tarjeton_100x200",
+    label: "Tarjetón 100x200",
     per_sheet: 6,
   },
   {

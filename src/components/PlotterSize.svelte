@@ -36,7 +36,7 @@
     type="text"
     bind:value={height_value}
     disabled
-    class="w-full outline-none p-4 bg-gray-700 border border-gray-600 rounded-md text-right"
+    class="w-full outline-none p-4 bg-gray-300 dark:bg-gray-700 border border-gray-400 dark:border-gray-600 rounded-md text-right"
   />
 
   <div class="flex flex-col gap-1">

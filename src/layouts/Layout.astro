@@ -10,12 +10,20 @@ import Nav from "@/components/Nav.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
     <title>{Astro.props.title}</title>
   </head>
-  <body class="overflow-hidden bg-gray-900 text-gray-100">
-    <div class="mx-auto max-w-xl">
+  <body class="bg-gray-200 text-gray-700 dark:bg-gray-900 dark:text-gray-100">
+    <div class="mx-auto flex min-h-screen max-w-2xl flex-col gap-4">
       <slot />
+      <Nav />
     </div>
-    <Nav />
   </body>
+
+  <style>
+    :root {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.2) rgba(0, 0, 0, 0);
+    }
+  </style>
 </html>

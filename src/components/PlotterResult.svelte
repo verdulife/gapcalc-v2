@@ -11,12 +11,9 @@
 </script>
 
 <div class="flex flex-col items-end text-right">
-  <small class="text-gray-500">
-    Precio metro lineal {formatPrice(plotter.price)}
-  </small>
-  <small class="text-gray-500">
-    Usado {plotter.width_cm}x{height_value + PLOTTER_ADDED_CM}cm
-  </small>
+  <span class="text-gray-500">
+    {plotter.width_cm}x{height_value + PLOTTER_ADDED_CM}cm
+  </span>
 
   <output class="text-6xl">
     {formatPrice(price)}

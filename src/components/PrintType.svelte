@@ -12,10 +12,10 @@
     {#each $Prints as print}
       <label
         class="
-          w-full aspect-square flex items-center justify-center
-          p-4 text-center rounded-md border border-gray-600
+          w-full flex items-center justify-center
+          p-4 text-center rounded-md border border-gray-400 dark:border-gray-600
           transition-colors
-          {print_value === print.id ? 'bg-green-300 text-black' : 'bg-gray-700'}
+          {print_value === print.id ? 'bg-green-300 text-gray-700' : 'bg-gray-300 dark:bg-gray-700'}
         "
       >
         <input
