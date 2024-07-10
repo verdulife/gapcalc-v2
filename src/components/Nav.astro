@@ -4,12 +4,14 @@ import Plotter from "@/assets/Plotter.astro";
 import Options from "@/assets/Options.astro";
 ---
 
-<header class="sticky bottom-0 flex w-full justify-center p-4 pointer-events-none mt-auto">
+<header
+  class="pointer-events-none fixed bottom-0 mt-auto flex w-full justify-center"
+>
   <nav
-    class="flex items-center gap-4 rounded-full border border-gray-400 dark:border-gray-800/50 bg-gray-300/70 dark:bg-gray-950/70 px-4 py-2 backdrop-blur pointer-events-auto"
+    class="h-[75px] pointer-events-auto w-full grid grid-cols-3 gap-4 border border-gray-400 bg-gray-300/70 px-4 py-2 backdrop-blur dark:border-gray-800/50 dark:bg-gray-950/70"
   >
-    <a href="/" class="p-4 text-xs uppercase"><Printer /></a>
-    <a href="/plotter" class="p-4 text-xs uppercase"><Plotter /></a>
-    <a href="/user" class="p-4 text-xs uppercase"><Options /></a>
+    <a href="/" class="w-full flex justify-center items-center p-4"><Printer /></a>
+    <a href="/plotter" class="w-full flex justify-center items-center p-4"><Plotter /></a>
+    <a href="/user" class="w-full flex justify-center items-center p-4"><Options /></a>
   </nav>
 </header>

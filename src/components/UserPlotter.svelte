@@ -15,7 +15,7 @@
       <li class="flex gap-2">
         <input
           type="text"
-          value={plotter.name}
+          value={plotter.label}
           class="outline-none bg-gray-950 text-gray-100 p-2 grow w-full"
         />
 

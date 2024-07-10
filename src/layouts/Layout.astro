@@ -14,16 +14,28 @@ import Nav from "@/components/Nav.astro";
     <title>{Astro.props.title}</title>
   </head>
   <body class="bg-gray-200 text-gray-700 dark:bg-gray-900 dark:text-gray-100">
-    <div class="mx-auto flex min-h-screen max-w-2xl flex-col gap-4">
+    <div class="mx-auto flex max-w-2xl flex-col gap-4 h-[calc(100vh_-_75px)]">
       <slot />
-      <Nav />
     </div>
+    <Nav />
   </body>
-
-  <style>
-    :root {
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255, 255, 255, 0.2) rgba(0, 0, 0, 0);
-    }
-  </style>
 </html>
+
+<style>
+  :root {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(0, 0, 0, 0);
+  }
+</style>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+
+  window.addEventListener("keydown", (ev) => {
+    const { altKey, key } = ev;
+
+    if (altKey && key === "1") navigate("/");
+    if (altKey && key === "2") navigate("/plotter");
+    if (altKey && key === "3") navigate("/user");
+  });
+</script>
