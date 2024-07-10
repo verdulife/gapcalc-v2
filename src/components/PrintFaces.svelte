@@ -11,7 +11,7 @@
       <label
         class="
           w-full flex items-center justify-center
-          p-2 text-center rounded-lg font-medium
+          text-center rounded-lg font-medium
           transition-colors
           {faces_value === face && 'bg-gradient-to-tr from-green-400 to-green-300 text-gray-700'}
         "

@@ -2,6 +2,7 @@
   import { WORK_PRICE, DISPLAY_AMOUNTS, EXPRESS_MULIPLIER } from "@/lib/consts";
   import { Prints, Papers } from "@/lib/stores";
   import { formatPrice, textToClipboard } from "@/lib/utils";
+  import InputUnits from "./InputUnits.svelte";
 
   export let print_value, faces_value, paper_value, express_value;
 
@@ -50,12 +51,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-  <input
-    type="search"
-    bind:value={amount_filter}
-    placeholder="🔎 Buscar cantidad"
-    class="w-full p-4 bg-gray-300 dark:bg-gray-950 border border-gray-400 dark:border-gray-800 rounded-md outline-none placeholder-gray-600"
-  />
+  <InputUnits bind:value={amount_filter} units="🔎" reverse></InputUnits>
 
   <ul class="flex flex-wrap w-full">
     {#each filtered_amounts as amount}

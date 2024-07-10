@@ -6,6 +6,8 @@ export const DISPLAY_AMOUNTS = [25, 50, 100, 150, 200, 250, 300, 350, 400, 450, 
 export const PLOTTER_ADDED_CM = 10;
 export const ALLOWED_KEYS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "/", "*", "=", "Enter", "Backspace", "DEL", "AC", "Escape"];
 export const EXPRESS_MULIPLIER = 1.15;
+export const WIDTH_LOSS_CM = 5;
+export const SEPARATOR_CM = 0.5;
 
 export const papers = [
   {
@@ -43,32 +45,32 @@ export const plotters = [
     price: 37.20
   },
   {
-    id: "papel_fotografico",
-    label: "Papel fotográfico",
+    id: "papel_foto",
+    label: "Papel foto",
     width_cm: 105,
     price: 55.90
   },
   {
     id: "vinilo_corte",
-    label: "Vinilo de corte",
+    label: "Vinilo corte",
     width_cm: 60,
     price: 31.95
   },
   {
-    id: "vinilo_corte_especial",
-    label: "Vinilo de corte especial",
+    id: "vinilo_corte_esp",
+    label: "Vinilo corte esp",
     width_cm: 152,
     price: 88.30
   },
   {
     id: "vinilo_impresion",
-    label: "Vinilo de impresión",
+    label: "Vinilo impresión",
     width_cm: 105,
     price: 48.30
   },
   {
-    id: "vinilo_impresion_laminado",
-    label: "Vinilo de impresión laminado",
+    id: "vinilo_imp_laminado",
+    label: "Vinilo imp laminado",
     width_cm: 105,
     price: 55.90
   },

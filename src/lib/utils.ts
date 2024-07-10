@@ -1,5 +1,5 @@
 function roundToFive(value: number): number {
-  return Math.round(value / 0.05) * 0.05;
+  return Math.ceil(value / 0.05) * 0.05;
 }
 
 export function formatPrice(price: number): string {
