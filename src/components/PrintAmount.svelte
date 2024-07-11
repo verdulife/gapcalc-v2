@@ -52,7 +52,9 @@
   }
 </script>
 
-<div class="flex flex-col gap-2">
+<div
+  class="flex flex-col gap-2 bg-gray-950 p-6"
+>
   <InputUnits bind:value={amount_filter} units="🔎" reverse></InputUnits>
 
   <ul class="flex flex-wrap w-full">
@@ -66,16 +68,16 @@
         "
       >
         <button
-          class="flex justify-between w-full"
+          class="flex justify-between items-center w-full [text-shadow:0_0_7px_rgba(255,255,255,0.6)]"
           on:click={() =>
             handleCopy(calcPrice(amount, paper, faces_value, per_sheet))}
         >
-          <p class="font-medium">
+          <p class="font-medium ">
             {amount}u ({calcSheets(amount, per_sheet)} hojas)
           </p>
           <p
             class="
-              px-2 py-1 bg-gray-300 dark:bg-gray-800 dark:text-gray-100 text-sm rounded-md transition-colors
+              px-2 py-1 bg-gray-300 dark:bg-gray-800 dark:text-gray-100 rounded-md transition-colors
               {copied ===
               calcPrice(amount, paper, faces_value, per_sheet, express) &&
               '!text-green-300'}

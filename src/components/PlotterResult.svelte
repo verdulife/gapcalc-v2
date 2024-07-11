@@ -59,7 +59,7 @@
 </script>
 
 <button
-  class="flex flex-col text-right items-end px-6 pt-6 gap-2"
+  class="flex flex-col text-right items-end p-6 gap-2 bg-gray-950 [text-shadow:0_0_10px_rgba(255,255,255,0.6)]"
   on:click={() => handleCopy(formatPrice(calcPrice()))}
 >
   <output class="text-5xl {copied && '!text-green-300'}">

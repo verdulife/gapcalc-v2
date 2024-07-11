@@ -5,13 +5,19 @@ import Options from "@/assets/Options.astro";
 ---
 
 <header
-  class="pointer-events-none fixed bottom-0 mt-auto flex w-full justify-center"
+  class="pointer-events-none fixed bottom-0 flex w-full justify-center border border-gray-400 bg-gray-300/70 backdrop-blur dark:border-gray-800/50 dark:bg-gray-950/70"
 >
   <nav
-    class="h-[75px] pointer-events-auto max-w-md w-full grid grid-cols-3 gap-4 border border-gray-400 bg-gray-300/70 px-4 py-2 backdrop-blur dark:border-gray-800/50 dark:bg-gray-950/70"
+    class="pointer-events-auto grid h-[75px] w-full max-w-md grid-cols-3 gap-4 px-4 py-2"
   >
-    <a href="/" class="w-full flex justify-center items-center p-4"><Printer /></a>
-    <a href="/plotter" class="w-full flex justify-center items-center p-4"><Plotter /></a>
-    <a href="/user" class="w-full flex justify-center items-center p-4"><Options /></a>
+    <a href="/" class="flex w-full items-center justify-center p-4"
+      ><Printer /></a
+    >
+    <a href="/plotter" class="flex w-full items-center justify-center p-4"
+      ><Plotter /></a
+    >
+    <a href="/user" class="flex w-full items-center justify-center p-4"
+      ><Options /></a
+    >
   </nav>
 </header>

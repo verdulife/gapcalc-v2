@@ -6,7 +6,7 @@
   $: currentPrint = $Prints.find((print) => print.id === print_value);
 </script>
 
-<details class="flex flex-col gap-2" name="prints" open>
+<details class="flex flex-col gap-2 px-6" name="prints" open>
   <summary class="font-medium text-lg">{currentPrint.label}</summary>
 
   <div class="grid grid-cols-3 w-full gap-2 mt-2">

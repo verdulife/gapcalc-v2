@@ -26,8 +26,6 @@
     {amount_value}
   />
 
-  <hr class="border-gray-300 dark:border-gray-800 w-full" />
-
   <PlotterSize bind:width_value bind:height_value />
 
   <hr class="border-gray-300 dark:border-gray-800 w-full" />
