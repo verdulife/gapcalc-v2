@@ -8,6 +8,7 @@ export const ALLOWED_KEYS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "
 export const EXPRESS_MULIPLIER = 1.15;
 export const WIDTH_LOSS_CM = 5;
 export const SEPARATOR_CM = 0.5;
+export const MINIMUM_HEIGHT = 20;
 
 export const papers = [
   {

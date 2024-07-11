@@ -53,7 +53,7 @@
 </script>
 
 <div
-  class="flex flex-col gap-2 bg-gray-950 p-6"
+  class="flex flex-col gap-2 bg-gray-50 dark:bg-gray-950 p-6"
 >
   <InputUnits bind:value={amount_filter} units="🔎" reverse></InputUnits>
 
