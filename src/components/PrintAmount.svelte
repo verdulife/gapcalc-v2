@@ -38,7 +38,9 @@
   }
 
   async function handleCopy(value) {
-    const success = await textToClipboard(value);
+    const cleanValue = value.replace("€", "").trim();
+    const success = await textToClipboard(cleanValue);
+
     if (success) {
       copied = value;
       setTimeout(() => {
