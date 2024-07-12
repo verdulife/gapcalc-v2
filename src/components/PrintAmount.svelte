@@ -1,5 +1,12 @@
 <script>
-  import { WORK_PRICE, DISPLAY_AMOUNTS, EXPRESS_MULIPLIER } from "@/lib/consts";
+  import {
+    WORK_PRICE,
+    DISPLAY_AMOUNTS,
+    EXPRESS_MULIPLIER,
+    WORK_PRICE_CARDS,
+    SCALE_SUBSTRACT_PRICE,
+    SCALE_EACH,
+  } from "@/lib/consts";
   import { Prints, Papers } from "@/lib/stores";
   import { formatPrice, textToClipboard } from "@/lib/utils";
   import InputUnits from "./InputUnits.svelte";
@@ -10,7 +17,7 @@
 
   $: paper = $Papers.find((p) => p.id === paper_value);
   $: print = $Prints.find((p) => p.id === print_value);
-  $: per_sheet = print.per_sheet;
+  $: per_sheet = print?.per_sheet || 0;
   $: express = express_value;
 
   let amount_filter;
@@ -25,15 +32,17 @@
 
   function calcPrice(amount, paper, faces_value, per_sheet, express) {
     const sheets = calcSheets(amount, per_sheet);
-    let price;
 
-    if (express) {
-      price =
-        (sheets * paper.price[faces_value - 1] + WORK_PRICE) *
-        EXPRESS_MULIPLIER;
-    } else {
-      price = sheets * paper.price[faces_value - 1] + WORK_PRICE;
+    let paper_price = paper.price;
+    let each_scale = Math.floor(sheets / SCALE_EACH);
+    for (let s = 0; s < each_scale; s++) {
+      paper_price = paper_price.map((p) => p - SCALE_SUBSTRACT_PRICE);
     }
+
+    let price = sheets * paper_price[faces_value - 1] + WORK_PRICE;
+    if (print.id === "tarjetas_visita") price = price + WORK_PRICE_CARDS;
+    if (express) price = price * EXPRESS_MULIPLIER;
+
     return formatPrice(price);
   }
 
@@ -52,9 +61,7 @@
   }
 </script>
 
-<div
-  class="flex flex-col gap-2 bg-gray-50 dark:bg-gray-950 p-6"
->
+<div class="flex flex-col gap-2 bg-gray-50 dark:bg-gray-950 p-6">
   <InputUnits bind:value={amount_filter} units="🔎" reverse></InputUnits>
 
   <ul class="flex flex-wrap w-full">
@@ -72,7 +79,7 @@
           on:click={() =>
             handleCopy(calcPrice(amount, paper, faces_value, per_sheet))}
         >
-          <p class="font-medium ">
+          <p class="font-medium">
             {amount}u ({calcSheets(amount, per_sheet)} hojas)
           </p>
           <p
