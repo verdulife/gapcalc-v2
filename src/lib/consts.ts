@@ -1,8 +1,8 @@
 import { round } from "@/lib/utils";
 
 export const SECOND_FACE_PRICE = 0.85;
-export const WORK_PRICE = 15;
-export const DISPLAY_AMOUNTS = [25, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000];
+export const WORK_PRICE = 10;
+export const DISPLAY_AMOUNTS = [25, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000];
 export const PLOTTER_ADDED_CM = 10;
 export const ALLOWED_KEYS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "/", "*", "=", "Enter", "Backspace", "DEL", "AC", "Escape"];
 export const EXPRESS_MULIPLIER = 1.15;
