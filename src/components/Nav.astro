@@ -1,6 +1,7 @@
 ---
 import Printer from "@/assets/Printer.astro";
 import Plotter from "@/assets/Plotter.astro";
+import Tshirt from "@/assets/Tshirt.astro";
 import Options from "@/assets/Options.astro";
 ---
 
@@ -8,7 +9,7 @@ import Options from "@/assets/Options.astro";
   class="pointer-events-none fixed bottom-0 flex w-full justify-center border border-gray-400 bg-gray-300/70 backdrop-blur dark:border-gray-800/50 dark:bg-gray-950/70"
 >
   <nav
-    class="pointer-events-auto grid h-[75px] w-full max-w-md grid-cols-3 gap-4 px-4 py-2"
+    class="pointer-events-auto grid h-[75px] w-full max-w-md grid-cols-4 gap-4 px-4 py-2"
   >
     <a href="/" class="flex w-full items-center justify-center p-4"
       ><Printer /></a
@@ -16,8 +17,24 @@ import Options from "@/assets/Options.astro";
     <a href="/plotter" class="flex w-full items-center justify-center p-4"
       ><Plotter /></a
     >
-    <a href="/user" class="flex w-full items-center justify-center p-4"
+    <a href="/camisetas" class="flex w-full items-center justify-center p-4"
+      ><Tshirt /></a
+    >
+    <a href="/ajustes" class="flex w-full items-center justify-center p-4"
       ><Options /></a
     >
   </nav>
 </header>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+
+  window.addEventListener("keydown", (ev) => {
+    const { altKey, key } = ev;
+
+    if (altKey && key === "1") navigate("/");
+    if (altKey && key === "2") navigate("/plotter");
+    if (altKey && key === "3") navigate("/camisetas");
+    if (altKey && key === "4") navigate("/ajustes");
+  });
+</script>

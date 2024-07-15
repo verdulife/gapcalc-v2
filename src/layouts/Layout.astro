@@ -32,15 +32,3 @@ import Nav from "@/components/Nav.astro";
     scrollbar-color: rgba(255, 255, 255, 0.2) rgba(0, 0, 0, 0);
   }
 </style>
-
-<script>
-  import { navigate } from "astro:transitions/client";
-
-  window.addEventListener("keydown", (ev) => {
-    const { altKey, key } = ev;
-
-    if (altKey && key === "1") navigate("/");
-    if (altKey && key === "2") navigate("/plotter");
-    if (altKey && key === "3") navigate("/user");
-  });
-</script>
