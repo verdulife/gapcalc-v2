@@ -1,16 +1,16 @@
 <script>
-  import { Plotters } from "@/lib/stores";
   import { WIDTH_LOSS_CM } from "@/lib/consts";
-
   import PlotterType from "@/components/PlotterType.svelte";
   import PlotterSize from "@/components/PlotterSize.svelte";
   import PlotterResult from "@/components/PlotterResult.svelte";
   import Express from "@/components/Express.svelte";
   import InputUnits from "@/components/InputUnits.svelte";
 
+  export let plotters;
+
   let plotter_value = "papel_masas";
   let width_value = (
-    $Plotters.find((p) => p.id === plotter_value).width_cm - WIDTH_LOSS_CM
+    plotters.find((p) => p.id === plotter_value).width_cm - WIDTH_LOSS_CM
   ).toString();
   let height_value = "100";
   let express_value = false;
@@ -19,6 +19,7 @@
 
 <div class="flex flex-col gap-6">
   <PlotterResult
+    {plotters}
     {plotter_value}
     {width_value}
     {height_value}
@@ -37,5 +38,5 @@
 
   <hr class="border-gray-300 dark:border-gray-800 w-full" />
 
-  <PlotterType bind:plotter_value />
+  <PlotterType {plotters} bind:plotter_value />
 </div>

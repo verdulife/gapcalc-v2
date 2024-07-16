@@ -1,5 +1,4 @@
 <script>
-  import { Plotters } from "@/lib/stores";
   import { formatPrice, textToClipboard } from "@/lib/utils";
   import {
     PLOTTER_ADDED_CM,
@@ -9,7 +8,8 @@
     MINIMUM_HEIGHT,
   } from "@/lib/consts";
 
-  export let plotter_value,
+  export let plotters,
+    plotter_value,
     width_value,
     height_value,
     express_value,
@@ -19,7 +19,7 @@
   let rest_space = 1;
   let usedHeight = 0;
 
-  $: currentPlotter = $Plotters.find((p) => p.id === plotter_value);
+  $: currentPlotter = plotters.find((p) => p.id === plotter_value);
   $: express = express_value;
   $: currentWidth = +width_value || currentPlotter?.width_cm || 0;
   $: currentHeight = +height_value || 0;

@@ -5,6 +5,8 @@
   import PrintPaper from "@/components/PrintPaper.svelte";
   import Express from "./Express.svelte";
 
+  export let papers, prints;
+
   let print_value = "tarjetas_visita";
   let faces_value = 2;
   let paper_value = "300gr";
@@ -12,14 +14,21 @@
 </script>
 
 <section class="flex flex-col gap-6 py-6">
-  <PrintType bind:print_value />
+  <PrintType {prints} bind:print_value />
   <hr class="border-gray-300 dark:border-gray-800" />
-  <PrintPaper bind:paper_value />
+  <PrintPaper {papers} bind:paper_value />
   <hr class="border-gray-300 dark:border-gray-800" />
   <div class="grid grid-cols-2 w-full gap-2 px-6">
     <PrintFaces bind:faces_value />
     <Express bind:express_value />
   </div>
   <hr class="border-gray-300 dark:border-gray-800" />
-  <PrintAmount {print_value} {faces_value} {paper_value} {express_value} />
+  <PrintAmount
+    {papers}
+    {prints}
+    {print_value}
+    {faces_value}
+    {paper_value}
+    {express_value}
+  />
 </section>

@@ -1,5 +1,5 @@
 <script>
-  import { Papers } from "@/lib/stores";
+  export let papers;
 </script>
 
 <section class="flex flex-col gap-2">
@@ -11,7 +11,7 @@
       <span class="grow w-1/3">2 Caras</span>
     </li>
 
-    {#each $Papers as paper}
+    {#each papers as paper}
       <li class="flex gap-2">
         <input
           type="text"

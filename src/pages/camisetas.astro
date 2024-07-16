@@ -1,8 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import TshirtComponent from "@/components/Tshirt.svelte";
+import { db, TshirtTable } from "astro:db";
+
+const tshirts = await db.select().from(TshirtTable);
 ---
 
 <Layout title="Camisetas">
-  <TshirtComponent client:load />
+  <TshirtComponent client:load tshirts={tshirts} />
 </Layout>

@@ -7,16 +7,20 @@
     SCALE_SUBSTRACT_PRICE,
     SCALE_EACH,
   } from "@/lib/consts";
-  import { Prints, Papers } from "@/lib/stores";
   import { formatPrice, textToClipboard } from "@/lib/utils";
   import InputUnits from "./InputUnits.svelte";
 
-  export let print_value, faces_value, paper_value, express_value;
+  export let papers,
+    prints,
+    print_value,
+    faces_value,
+    paper_value,
+    express_value;
 
   let copied = false;
 
-  $: paper = $Papers.find((p) => p.id === paper_value);
-  $: print = $Prints.find((p) => p.id === print_value);
+  $: paper = papers.find((p) => p.id === paper_value);
+  $: print = prints.find((p) => p.id === print_value);
   $: per_sheet = print?.per_sheet || 0;
   $: express = express_value;
 

@@ -1,13 +1,12 @@
 <script>
-  import { Tshirts } from "@/lib/stores";
   import { TSHIRT_PRICE } from "@/lib/consts";
   import { formatPrice, textToClipboard } from "@/lib/utils";
 
-  export let tshirt_value, front_value, back_value;
+  export let tshirts, tshirt_value, front_value, back_value;
   let copied = false;
 
-  $: currentFront = $Tshirts.find((tshirt) => tshirt.id === front_value);
-  $: currentBack = $Tshirts.find((tshirt) => tshirt.id === back_value);
+  $: currentFront = tshirts.find((tshirt) => tshirt.id === front_value);
+  $: currentBack = tshirts.find((tshirt) => tshirt.id === back_value);
   $: basePrice = tshirt_value ? TSHIRT_PRICE : 0;
 
   $: calcPrice = () => {

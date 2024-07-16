@@ -1,8 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import PlotterComponent from "@/components/Plotter.svelte";
+import { db, PlotterTable } from "astro:db";
+
+const plotters = await db.select().from(PlotterTable);
 ---
 
 <Layout title="Plotter">
-  <PlotterComponent client:load />
+  <PlotterComponent client:load plotters={plotters} />
 </Layout>

@@ -1,5 +1,5 @@
 <script>
-  import { Plotters } from "@/lib/stores";
+  export let plotters;
 </script>
 
 <section class="flex flex-col gap-2">
@@ -11,7 +11,7 @@
       <span class="grow w-1/3">Precio</span>
     </li>
 
-    {#each $Plotters as plotter}
+    {#each plotters as plotter}
       <li class="flex gap-2">
         <input
           type="text"
