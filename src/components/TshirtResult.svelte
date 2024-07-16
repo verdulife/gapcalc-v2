@@ -1,0 +1,37 @@
+<script>
+  import { Tshirts } from "@/lib/stores";
+  import { TSHIRT_PRICE } from "@/lib/consts";
+  import { formatPrice, textToClipboard } from "@/lib/utils";
+
+  export let tshirt_value, front_value, back_value;
+  let copied = false;
+
+  $: currentFront = $Tshirts.find((tshirt) => tshirt.id === front_value);
+  $: currentBack = $Tshirts.find((tshirt) => tshirt.id === back_value);
+  $: basePrice = tshirt_value ? TSHIRT_PRICE : 0;
+
+  $: calcPrice = () => {
+    return basePrice + currentFront.price + currentBack.price;
+  };
+
+  function handleCopy(value) {
+    const cleanValue = value.replace("€", "").trim();
+    const success = textToClipboard(cleanValue);
+
+    if (success) {
+      copied = value;
+      setTimeout(() => (copied = false), 500);
+    } else {
+      copied = false;
+    }
+  }
+</script>
+
+<button
+  class="flex flex-col text-right items-end px-6 py-10 gap-2 bg-gray-50 dark:bg-gray-950 [text-shadow:0_0_10px_rgba(255,255,255,0.6)]"
+  on:click={() => handleCopy(formatPrice(calcPrice()))}
+>
+  <output class="text-5xl {copied && '!text-green-300'}">
+    {formatPrice(calcPrice())}
+  </output>
+</button>

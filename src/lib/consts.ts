@@ -12,6 +12,7 @@ export const SEPARATOR_CM = 0.5;
 export const MINIMUM_HEIGHT = 20;
 export const SCALE_SUBSTRACT_PRICE = 0.10;
 export const SCALE_EACH = 10;
+export const TSHIRT_PRICE = 7.5;
 
 export const papers = [
   {
@@ -129,5 +130,28 @@ export const prints = [
     id: "din_a4",
     label: "DIN A4",
     per_sheet: 2,
+  },
+];
+
+export const tshirts = [
+  {
+    id: "small",
+    label: "Hasta 10x10cm",
+    price: 6,
+  },
+  {
+    id: "medium",
+    label: "Hasta 22x22cm",
+    price: 7,
+  },
+  {
+    id: "large",
+    label: "Hasta 30x40cm",
+    price: 8,
+  },
+  {
+    id: "empty",
+    label: "Sin impresión",
+    price: 0,
   },
 ];

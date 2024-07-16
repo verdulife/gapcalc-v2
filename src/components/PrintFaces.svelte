@@ -18,7 +18,6 @@
       >
         <input
           type="radio"
-          name="caras"
           bind:group={faces_value}
           value={face}
           class="appearance-none"

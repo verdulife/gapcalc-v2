@@ -1,9 +1,20 @@
 <script>
-  import TshirtFront from "./TshirtFront.svelte";
+  import TshirtSide from "@/components/TshirtSide.svelte";
+  import TshirtFabric from "@/components/TshirtFabric.svelte";
+  import TshirtResult from "./TshirtResult.svelte";
 
   let front_value = "large";
+  let back_value = "empty";
+  let tshirt_value = true;
 </script>
 
-<div class="flex flex-col gap-2 p-8">
-  <TshirtFront bind:value={front_value} />
+<div class="flex flex-col gap-6">
+  <TshirtResult {tshirt_value} {front_value} {back_value} />
+
+  <div class="grid grid-cols-1 gap-2 px-6">
+    <TshirtFabric bind:tshirt_value />
+  </div>
+
+  <TshirtSide bind:value={front_value} title="Frontal" />
+  <TshirtSide bind:value={back_value} title="Trasera" />
 </div>
