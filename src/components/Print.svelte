@@ -3,9 +3,9 @@
   import PrintFaces from "@/components/PrintFaces.svelte";
   import PrintAmount from "@/components/PrintAmount.svelte";
   import PrintPaper from "@/components/PrintPaper.svelte";
-  import Express from "./Express.svelte";
+  import Express from "@/components/Express.svelte";
 
-  export let papers, prints;
+  export let papers, prints, vars;
 
   let print_value = "tarjetas_visita";
   let faces_value = 2;
@@ -24,6 +24,7 @@
   </div>
   <hr class="border-gray-300 dark:border-gray-800" />
   <PrintAmount
+    {vars}
     {papers}
     {prints}
     {print_value}

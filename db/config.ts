@@ -4,7 +4,7 @@ const PaperTable = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
     label: column.text(),
-    price: column.json(),
+    price: column.number(),
   }
 })
 
@@ -33,6 +33,18 @@ const TshirtTable = defineTable({
   }
 })
 
+const VarTable = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    SECOND_FACE_PRICE: column.number(),
+    WORK_PRICE: column.number(),
+    WORK_PRICE_CARDS: column.number(),
+    EXPRESS_MULIPLIER: column.number(),
+    SCALE_SUBSTRACT_PRICE: column.number(),
+    TSHIRT_PRICE: column.number(),
+  }
+})
+
 export default defineDb({
-  tables: { PaperTable, PrintTable, PlotterTable, TshirtTable },
+  tables: { PaperTable, PrintTable, PlotterTable, TshirtTable, VarTable },
 });

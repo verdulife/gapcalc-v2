@@ -2,18 +2,20 @@
   import { formatPrice, textToClipboard } from "@/lib/utils";
   import {
     PLOTTER_ADDED_CM,
-    EXPRESS_MULIPLIER,
     WIDTH_LOSS_CM,
     SEPARATOR_CM,
     MINIMUM_HEIGHT,
   } from "@/lib/consts";
 
-  export let plotters,
+  export let vars,
+    plotters,
     plotter_value,
     width_value,
     height_value,
     express_value,
     amount_value;
+
+  const { EXPRESS_MULIPLIER } = vars;
 
   let copied = false;
   let rest_space = 1;

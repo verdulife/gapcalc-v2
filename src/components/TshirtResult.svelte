@@ -1,8 +1,9 @@
 <script>
-  import { TSHIRT_PRICE } from "@/lib/consts";
   import { formatPrice, textToClipboard } from "@/lib/utils";
 
-  export let tshirts, tshirt_value, front_value, back_value;
+  export let vars, tshirts, tshirt_value, front_value, back_value;
+
+  const { TSHIRT_PRICE } = vars;
   let copied = false;
 
   $: currentFront = tshirts.find((tshirt) => tshirt.id === front_value);

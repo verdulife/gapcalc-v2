@@ -1,12 +1,14 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Print from "@/components/Print.svelte";
-import { db, PaperTable, PrintTable } from "astro:db";
+import { db, PaperTable, PrintTable, VarTable } from "astro:db";
 
 const papers = await db.select().from(PaperTable);
 const prints = await db.select().from(PrintTable);
+const varsArr = await db.select().from(VarTable);
+const { id, ...vars } = varsArr[0];
 ---
 
 <Layout title="Impresión">
-  <Print client:load papers={papers} prints={prints} />
+  <Print client:load papers={papers} prints={prints} vars={vars} />
 </Layout>

@@ -6,7 +6,7 @@
   import Express from "@/components/Express.svelte";
   import InputUnits from "@/components/InputUnits.svelte";
 
-  export let plotters;
+  export let plotters, vars;
 
   let plotter_value = "papel_masas";
   let width_value = (
@@ -19,6 +19,7 @@
 
 <div class="flex flex-col gap-6">
   <PlotterResult
+    {vars}
     {plotters}
     {plotter_value}
     {width_value}

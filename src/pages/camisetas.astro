@@ -1,11 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import TshirtComponent from "@/components/Tshirt.svelte";
-import { db, TshirtTable } from "astro:db";
+import { db, TshirtTable, VarTable } from "astro:db";
 
 const tshirts = await db.select().from(TshirtTable);
+const varsArr = await db.select().from(VarTable);
+const { id, ...vars } = varsArr[0];
 ---
 
 <Layout title="Camisetas">
-  <TshirtComponent client:load tshirts={tshirts} />
+  <TshirtComponent client:load tshirts={tshirts} vars={vars} />
 </Layout>

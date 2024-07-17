@@ -1,13 +1,22 @@
 ---
-import { db, PaperTable, PlotterTable } from "astro:db";
+import { db, PaperTable, PlotterTable, TshirtTable, VarTable } from "astro:db";
 
 import Layout from "@/layouts/Layout.astro";
 import OptionsComponent from "@/components/Options.svelte";
 
 const papers = await db.select().from(PaperTable);
 const plotters = await db.select().from(PlotterTable);
+const thshirts = await db.select().from(TshirtTable);
+const varsArr = await db.select().from(VarTable);
+const { id, ...vars } = varsArr[0];
 ---
 
 <Layout title="Ajustes">
-  <OptionsComponent client:load papers={papers} plotters={plotters} />
+  <OptionsComponent
+    client:load
+    papers={papers}
+    plotters={plotters}
+    tshirts={thshirts}
+    vars={vars}
+  />
 </Layout>

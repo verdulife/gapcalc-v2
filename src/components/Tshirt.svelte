@@ -3,7 +3,7 @@
   import TshirtFabric from "@/components/TshirtFabric.svelte";
   import TshirtResult from "./TshirtResult.svelte";
 
-  export let tshirts;
+  export let tshirts, vars;
 
   let front_value = "large";
   let back_value = "empty";
@@ -11,7 +11,7 @@
 </script>
 
 <div class="flex flex-col gap-6">
-  <TshirtResult {tshirts} {tshirt_value} {front_value} {back_value} />
+  <TshirtResult {tshirts} {tshirt_value} {front_value} {back_value} {vars} />
 
   <div class="grid grid-cols-1 gap-2 px-6">
     <TshirtFabric bind:tshirt_value />

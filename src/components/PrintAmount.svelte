@@ -1,21 +1,23 @@
 <script>
-  import {
-    WORK_PRICE,
-    DISPLAY_AMOUNTS,
-    EXPRESS_MULIPLIER,
-    WORK_PRICE_CARDS,
-    SCALE_SUBSTRACT_PRICE,
-    SCALE_EACH,
-  } from "@/lib/consts";
+  import { DISPLAY_AMOUNTS, SCALE_EACH } from "@/lib/consts";
   import { formatPrice, textToClipboard } from "@/lib/utils";
   import InputUnits from "./InputUnits.svelte";
 
-  export let papers,
+  export let vars,
+    papers,
     prints,
     print_value,
     faces_value,
     paper_value,
     express_value;
+
+  const {
+    SECOND_FACE_PRICE,
+    WORK_PRICE,
+    WORK_PRICE_CARDS,
+    EXPRESS_MULIPLIER,
+    SCALE_SUBSTRACT_PRICE,
+  } = vars;
 
   let copied = false;
 
@@ -37,13 +39,14 @@
   function calcPrice(amount, paper, faces_value, per_sheet, express) {
     const sheets = calcSheets(amount, per_sheet);
 
-    let paper_price = paper.price;
+    let paper_price =
+      faces_value === 1 ? paper.price : paper.price + SECOND_FACE_PRICE;
     let each_scale = Math.floor(sheets / SCALE_EACH);
     for (let s = 0; s < each_scale; s++) {
-      paper_price = paper_price.map((p) => p - SCALE_SUBSTRACT_PRICE);
+      paper_price = paper_price - SCALE_SUBSTRACT_PRICE;
     }
 
-    let price = sheets * paper_price[faces_value - 1] + WORK_PRICE;
+    let price = sheets * paper_price + WORK_PRICE;
     if (print.id === "tarjetas_visita") price = price + WORK_PRICE_CARDS;
     if (express) price = price * EXPRESS_MULIPLIER;
 
