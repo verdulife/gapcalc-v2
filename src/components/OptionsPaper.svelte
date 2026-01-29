@@ -1,12 +1,12 @@
 <script>
   export let papers;
 
-  async function update(paper) {
+  /* async function update(paper) {
     await fetch("/api/paper", {
       method: "POST",
       body: JSON.stringify(paper),
     });
-  }
+  } */
 </script>
 
 <details class="flex flex-col gap-2" name="priceList" open>
@@ -30,7 +30,7 @@
           step="0.1"
           bind:value={paper.price}
           class="outline-none bg-gray-950 text-gray-100 p-2 grow w-1/4 rounded-md border border-gray-800"
-          on:change={() => update(paper)}
+          disabled
         />
       </li>
     {/each}

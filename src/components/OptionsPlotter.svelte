@@ -1,12 +1,12 @@
 <script>
   export let plotters;
 
-  async function update(plotter) {
+  /* async function update(plotter) {
     await fetch("/api/plotter", {
       method: "POST",
       body: JSON.stringify(plotter),
     });
-  }
+  } */
 </script>
 
 <details class="flex flex-col gap-2" name="priceList">
@@ -32,7 +32,7 @@
           type="number"
           bind:value={plotter.width_cm}
           class="outline-none bg-gray-950 text-gray-100 p-2 grow w-1/3 rounded-md border border-gray-800"
-          on:change={() => update(plotter)}
+          disabled
         />
 
         <input
@@ -40,7 +40,7 @@
           step="0.1"
           bind:value={plotter.price}
           class="outline-none bg-gray-950 text-gray-100 p-2 grow w-1/3 rounded-md border border-gray-800"
-          on:change={() => update(plotter)}
+          disabled
         />
       </li>
     {/each}

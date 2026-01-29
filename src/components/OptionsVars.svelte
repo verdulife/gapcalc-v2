@@ -3,12 +3,12 @@
 
   export let vars;
 
-  async function update(vars) {
+  /* async function update(vars) {
     const res = await fetch("/api/var", {
       method: "POST",
       body: JSON.stringify(vars),
     });
-  }
+  } */
 </script>
 
 <details class="flex flex-col gap-2" name="priceList">
@@ -33,7 +33,7 @@
           step="0.1"
           bind:value={vars[key]}
           class="outline-none bg-gray-950 text-gray-100 p-2 grow w-1/4 rounded-md border border-gray-800"
-          on:input={() => update(vars)}
+          disabled
         />
       </li>
     {/each}

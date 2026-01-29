@@ -1,11 +1,7 @@
 ---
+import { plotters, vars } from "@/lib/consts";
 import Layout from "@/layouts/Layout.astro";
 import PlotterComponent from "@/components/Plotter.svelte";
-import { db, PlotterTable, VarTable } from "astro:db";
-
-const plotters = await db.select().from(PlotterTable);
-const varsArr = await db.select().from(VarTable);
-const { id, ...vars } = varsArr[0];
 ---
 
 <Layout title="Plotter">

@@ -1,12 +1,12 @@
 <script>
   export let tshirts;
 
-  async function update(tshirt) {
+  /* async function update(tshirt) {
     await fetch("/api/tshirt", {
       method: "POST",
       body: JSON.stringify(tshirt),
     });
-  }
+  } */
 </script>
 
 <details class="flex flex-col gap-2" name="priceList">
@@ -31,7 +31,7 @@
           step="0.1"
           bind:value={tshirt.price}
           class="outline-none bg-gray-950 text-gray-100 p-2 grow w-1/4 rounded-md border border-gray-800"
-          on:change={() => update(tshirt)}
+          disabled
         />
       </li>
     {/each}
