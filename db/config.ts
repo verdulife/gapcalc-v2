@@ -1,4 +1,4 @@
-import { defineDb, defineTable, column } from 'astro:db';
+/* import { defineDb, defineTable, column } from 'astro:db';
 
 const PaperTable = defineTable({
   columns: {
@@ -48,3 +48,4 @@ const VarTable = defineTable({
 export default defineDb({
   tables: { PaperTable, PrintTable, PlotterTable, TshirtTable, VarTable },
 });
+ */

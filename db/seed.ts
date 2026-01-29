@@ -1,4 +1,4 @@
-import { db, PaperTable, PrintTable, PlotterTable, TshirtTable, VarTable } from 'astro:db';
+/* import { db, PaperTable, PrintTable, PlotterTable, TshirtTable, VarTable } from 'astro:db';
 import { papers, prints, plotters, tshirts, vars } from '@/lib/consts';
 
 export default async function seed() {
@@ -8,3 +8,4 @@ export default async function seed() {
   await db.insert(TshirtTable).values(tshirts);
   await db.insert(VarTable).values({ id: "vars", ...vars });
 }
+ */

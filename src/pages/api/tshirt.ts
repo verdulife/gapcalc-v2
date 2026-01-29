@@ -1,4 +1,4 @@
-import type { APIRoute } from 'astro';
+/* import type { APIRoute } from 'astro';
 import { db, eq, TshirtTable } from "astro:db";
 
 export const POST: APIRoute = async ({ request }) => {
@@ -14,4 +14,4 @@ export const POST: APIRoute = async ({ request }) => {
     upated: tshirt.id
   })
   )
-}
+} */
