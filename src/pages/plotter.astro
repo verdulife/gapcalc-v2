@@ -1,9 +1,11 @@
 ---
-import { plotters, vars } from "@/lib/consts";
 import Layout from "@/layouts/Layout.astro";
 import PlotterComponent from "@/components/Plotter.svelte";
+import { getAjustesData } from "@/lib/db-ajustes";
+
+const data = await getAjustesData();
 ---
 
 <Layout title="Plotter">
-  <PlotterComponent client:load plotters={plotters} vars={vars} />
+  <PlotterComponent client:load plotters={data.plotters} vars={data.vars} />
 </Layout>

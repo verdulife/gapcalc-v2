@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { WIDTH_LOSS_CM } from "@/lib/consts";
   import PlotterType from "@/components/PlotterType.svelte";
   import PlotterSize from "@/components/PlotterSize.svelte";
@@ -6,15 +6,23 @@
   import Express from "@/components/Express.svelte";
   import InputUnits from "@/components/InputUnits.svelte";
 
-  export let plotters, vars;
+  interface Props {
+    plotters: any[];
+    vars: any;
+  }
 
-  let plotter_value = "papel_masas";
-  let width_value = (
-    plotters.find((p) => p.id === plotter_value).width_cm - WIDTH_LOSS_CM
-  ).toString();
-  let height_value = "100";
-  let express_value = false;
-  let amount_value = "1";
+  let { plotters, vars }: Props = $props();
+
+  let plotter_value = $state("papel_masas");
+  let width_value = $state("");
+  let height_value = $state("100");
+  let express_value = $state(false);
+  let amount_value = $state("1");
+
+  $effect(() => {
+    const found = plotters.find((p) => p.id === plotter_value);
+    width_value = ((found?.width_cm ?? 0) - WIDTH_LOSS_CM).toString();
+  });
 </script>
 
 <div class="flex flex-col gap-6">
@@ -22,9 +30,9 @@
     {vars}
     {plotters}
     {plotter_value}
-    {width_value}
+    bind:width_value
     {height_value}
-    {express_value}
+    bind:express_value
     {amount_value}
   />
 

@@ -1,13 +1,18 @@
-<script>
+<script lang="ts">
   import TshirtSide from "@/components/TshirtSide.svelte";
   import TshirtFabric from "@/components/TshirtFabric.svelte";
   import TshirtResult from "./TshirtResult.svelte";
 
-  export let tshirts, vars;
+  interface Props {
+    tshirts: any[];
+    vars: any;
+  }
 
-  let front_value = "large";
-  let back_value = "empty";
-  let tshirt_value = true;
+  let { tshirts, vars }: Props = $props();
+
+  let front_value = $state("large");
+  let back_value = $state("empty");
+  let tshirt_value = $state(true);
 </script>
 
 <div class="flex flex-col gap-6">

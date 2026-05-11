@@ -1,22 +1,19 @@
-<script>
-  export let express_value;
-  const express = [false, true];
+<script lang="ts">
+  interface Props {
+    express_value?: $bindable<boolean>;
+  }
+
+  let { express_value = $bindable(false) }: Props = $props();
 </script>
 
-<section class="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-xl">
+<fieldset class="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-xl border-0">
+  <legend class="sr-only">Modo de entrega</legend>
   <div class="grid grid-cols-2 w-full">
-    {#each express as value}
-      <label
-        class="
-          w-full flex items-center justify-center
-          p-2 text-center rounded-lg font-medium
-          transition-colors
-          {express_value === value && 'bg-green-300 text-gray-700'}
-        "
-      >
+    {#each [false, true] as value}
+      <label class="w-full flex items-center justify-center p-2 text-center rounded-lg font-medium transition-colors cursor-pointer {express_value === value ? 'bg-green-300 text-gray-700' : ''}">
         <input
           type="radio"
-          name="caras"
+          name="express"
           bind:group={express_value}
           {value}
           class="appearance-none"
@@ -25,4 +22,4 @@
       </label>
     {/each}
   </div>
-</section>
+</fieldset>

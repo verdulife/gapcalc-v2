@@ -1,54 +1,137 @@
-# Astro Starter Kit: Basics
+# gapcalc-v2
 
-```sh
-npm create astro@latest -- --template basics
+Calculadora de precios para servicios de impresión (papel, plotter, camisetas) con panel de administración protegido.
+
+## Tech Stack
+
+- **Astro 6** (SSR) + **Svelte 5** + **Tailwind CSS 4**
+- **Drizzle ORM** + **@libsql/client** (Turso)
+- **Netlify** (hosting)
+- **Bun** (package manager)
+
+## Configuración
+
+### 1. Variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto:
+
+```env
+TURSO_DATABASE_URL=libsql://tu-db.turso.io
+TURSO_AUTH_TOKEN=tu_token_de_turso
+AUTH_PASSWORD=tu_contraseña_segura
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Puedes usar `.env.example` como referencia.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### 2. Crear base de datos en Turso
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+```bash
+# Crear base de datos
+turso db create gapcalc
 
-## 🚀 Project Structure
+# Obtener URL
+turso db show gapcalc --url
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+# Crear token de autenticación
+turso db tokens create gapcalc
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### 3. Instalar dependencias
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+bun install
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+### 4. Push del schema a Turso
 
-## 🧞 Commands
+```bash
+bun run db:push
+```
 
-All commands are run from the root of the project, from a terminal:
+### 5. Seed de datos iniciales
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+bun run db:seed
+```
 
-## 👀 Want to learn more?
+## Comandos
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+bun run dev          # Desarrollo local
+bun run build        # Build para producción
+bun run preview      # Preview del build
+bun run db:push      # Push cambios del schema a Turso
+bun run db:seed      # Poblar base de datos con datos iniciales
+```
+
+## Estructura del proyecto
+
+```
+src/
+├── db/
+│   ├── index.ts      # Conexión a Turso via Drizzle
+│   └── schema.ts     # Definición de tablas (papers, plotters, tshirts, prints, vars)
+├── lib/
+│   ├── db-print.ts   # Helper: datos para calculadora de impresión
+│   ├── db-plotter.ts # Helper: datos para calculadora de plotter
+│   └── utils.ts      # Utilidades (formateo de precios, portapapeles)
+├── components/       # Componentes Svelte (UI de calculadoras y panel de ajustes)
+├── pages/
+│   ├── index.astro   # Calculadora de impresión
+│   ├── plotter.astro # Calculadora de plotter
+│   ├── camisetas.astro# Calculadora de camisetas
+│   ├── ajustes.astro  # Panel de administración (protegido)
+│   ├── login.astro    # Página de login
+│   └── api/           # API routes para CRUD
+│       ├── papers.ts
+│       ├── plotters.ts
+│       ├── tshirts.ts
+│       ├── prints.ts
+│       ├── vars.ts
+│       ├── auth.ts
+│       └── logout.ts
+└── middleware.ts     # Protección de rutas (auth cookie)
+```
+
+## Actualizar precios
+
+1. Ve a `/ajustes` (necesitas estar logueado)
+2. Modifica los valores de papers, plotters, tshirts o variables
+3. Los cambios se guardan automáticamente en Turso
+
+## Seguridad
+
+- La página `/ajustes` está protegida por contraseña
+- La contraseña se configura via `AUTH_PASSWORD` en `.env`
+- Se usa una cookie `auth` que expira en 24h
+
+## Deployment
+
+El proyecto usa **Netlify** con SSR. Asegúrate de configurar las variables de entorno en el dashboard de Netlify:
+
+- `TURSO_DATABASE_URL`
+- `TURSO_AUTH_TOKEN`
+- `AUTH_PASSWORD`
+
+```bash
+# Deploy automático al hacer push a main
+git push origin main
+```
+
+## Migración de datos
+
+Si necesitas modificar el schema de la base de datos:
+
+1. Edita `src/db/schema.ts`
+2. Ejecuta `bun run db:push` para aplicar los cambios a Turso
+3. Si necesitas migrar datos existentes, crea un script de migración en `scripts/`
+
+## Datos disponibles en Turso
+
+| Tabla | Descripción |
+|-------|-------------|
+| `papers` | Tipos de papel con precios por unidad |
+| `prints` | Tipos de impresión con unidades por hoja |
+| `plotters` | Materiales de plotter con ancho y precio por metro |
+| `tshirts` | Tamaños de camiseta con precio de impresión |
+| `vars` | Variables globales de pricing (corte, urgencia, etc.) |

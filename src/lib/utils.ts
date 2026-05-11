@@ -4,21 +4,12 @@ function roundToFive(value: number): number {
 
 export function formatPrice(price: number): string {
   const rounded = roundToFive(price);
-
-  return Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: 'EUR',
+  return Intl.NumberFormat("es-ES", {
+    style: "currency",
+    currency: "EUR",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(rounded);
-}
-
-export function formatPlural(amount: number, text: string): string {
-  return amount === 1 ? `${amount} ${text}` : `${amount} ${text}s`;
-}
-
-export function round(value: number): number {
-  return Math.round(value * 100) / 100;
 }
 
 export async function textToClipboard(text: string): Promise<boolean> {
@@ -26,7 +17,16 @@ export async function textToClipboard(text: string): Promise<boolean> {
     await navigator.clipboard.writeText(text);
     return true;
   } catch (err) {
-    console.log('Failed to copy: ', err);
+    console.error("Clipboard error:", err);
     return false;
   }
 }
+
+export const VARS_DICTIONARY: Record<string, string> = {
+  SECOND_FACE_PRICE: "Precio segunda cara",
+  WORK_PRICE: "Corte",
+  WORK_PRICE_CARDS: "Añadido corte tarjetas",
+  EXPRESS_MULIPLIER: "Multiplicador de urgencias",
+  SCALE_SUBSTRACT_PRICE: "Reducción al escalar",
+  TSHIRT_PRICE: "Precio de camiseta",
+};

@@ -1,7 +1,12 @@
-<script>
-  import Card from "./Card.svelte";
+<script lang="ts">
+  import Card from "@/components/Card.svelte";
 
-  export let plotters, plotter_value;
+  interface Props {
+    plotters: any[];
+    plotter_value?: $bindable<string>;
+  }
+
+  let { plotters, plotter_value = $bindable("") }: Props = $props();
 </script>
 
 <section class="flex flex-col gap-2 px-6">

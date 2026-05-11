@@ -1,16 +1,22 @@
-<script>
+<script lang="ts">
   import PrintType from "@/components/PrintType.svelte";
   import PrintFaces from "@/components/PrintFaces.svelte";
   import PrintAmount from "@/components/PrintAmount.svelte";
   import PrintPaper from "@/components/PrintPaper.svelte";
   import Express from "@/components/Express.svelte";
 
-  export let papers, prints, vars;
+  interface Props {
+    papers: any[];
+    prints: any[];
+    vars: any;
+  }
 
-  let print_value = "tarjetas_visita";
-  let faces_value = 2;
-  let paper_value = "300gr";
-  let express_value = false;
+  let { papers, prints, vars }: Props = $props();
+
+  let print_value = $state("tarjetas_visita");
+  let faces_value = $state(2);
+  let paper_value = $state("300gr");
+  let express_value = $state(false);
 </script>
 
 <section class="flex flex-col gap-6 py-6">

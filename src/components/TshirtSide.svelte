@@ -1,7 +1,13 @@
-<script>
+<script lang="ts">
   import Card from "@/components/Card.svelte";
 
-  export let tshirts, value, title;
+  interface Props {
+    tshirts: any[];
+    value?: $bindable<string>;
+    title?: string;
+  }
+
+  let { tshirts, value = $bindable(""), title = "" }: Props = $props();
 </script>
 
 <div class="flex flex-col gap-2 px-6">

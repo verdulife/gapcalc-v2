@@ -1,20 +1,15 @@
-<script>
-  import { VARS_DICTIONARY } from "@/lib/consts";
+<script lang="ts">
+  import { VARS_DICTIONARY } from "@/lib/utils";
 
-  export let vars;
+  let { vars, onSave } = $props();
 
-  /* async function update(vars) {
-    const res = await fetch("/api/var", {
-      method: "POST",
-      body: JSON.stringify(vars),
-    });
-  } */
+  function handleChange(key, value) {
+    onSave({ ...vars, [key]: parseFloat(value) || value });
+  }
 </script>
 
 <details class="flex flex-col gap-2" name="priceList">
-  <summary
-    class="px-4 py-2 bg-gray-800 border border-gray-950 rounded-lg text-lg"
-  >
+  <summary class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-lg">
     Variables
   </summary>
 
@@ -24,16 +19,16 @@
       <span class="grow w-1/4">Precio</span>
     </li>
 
-    {#each Object.entries(vars) as [key]}
+    {#each Object.entries(vars || {}) as [key]}
       <li class="flex items-center gap-2">
-        <p class="text-gray-100 grow w-full">{VARS_DICTIONARY(key)}</p>
+        <p class="text-gray-100 grow w-full">{VARS_DICTIONARY[key] ?? key}</p>
 
         <input
           type="number"
           step="0.1"
-          bind:value={vars[key]}
-          class="outline-none bg-gray-950 text-gray-100 p-2 grow w-1/4 rounded-md border border-gray-800"
-          disabled
+          value={vars[key]}
+          onchange={(e) => handleChange(key, e.target.value)}
+          class="outline-none bg-gray-950 text-gray-100 p-2 grow w-1/4 rounded-md border border-gray-700 focus:border-green-500"
         />
       </li>
     {/each}

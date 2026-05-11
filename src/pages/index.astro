@@ -1,9 +1,11 @@
 ---
-import { papers, prints, vars } from "@/lib/consts";
 import Layout from "@/layouts/Layout.astro";
 import Print from "@/components/Print.svelte";
+import { getAjustesData } from "@/lib/db-ajustes";
+
+const data = await getAjustesData();
 ---
 
 <Layout title="Impresión">
-  <Print client:load papers={papers} prints={prints} vars={vars} />
+  <Print client:load papers={data.papers} prints={data.prints} vars={data.vars} />
 </Layout>

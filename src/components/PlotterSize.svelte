@@ -1,7 +1,12 @@
-<script>
+<script lang="ts">
   import InputUnits from "@/components/InputUnits.svelte";
 
-  export let width_value, height_value;
+  interface Props {
+    width_value?: $bindable<string>;
+    height_value?: $bindable<string>;
+  }
+
+  let { width_value = $bindable(""), height_value = $bindable("") }: Props = $props();
 </script>
 
 <section class="flex gap-2 px-6">

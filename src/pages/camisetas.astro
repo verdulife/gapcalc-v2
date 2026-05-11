@@ -1,9 +1,11 @@
 ---
-import { tshirts, vars } from "@/lib/consts";
 import Layout from "@/layouts/Layout.astro";
 import TshirtComponent from "@/components/Tshirt.svelte";
+import { getAjustesData } from "@/lib/db-ajustes";
+
+const { tshirts, vars } = await getAjustesData();
 ---
 
 <Layout title="Camisetas">
-  <TshirtComponent client:load tshirts={tshirts} vars={vars} />
+  <TshirtComponent client:load {tshirts} {vars} />
 </Layout>
